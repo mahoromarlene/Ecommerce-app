@@ -1,18 +1,20 @@
 <h1>All products</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Price</th>
-    <th>Image</th>
-    <th>Description</th>
-  </tr>
-    <% @products.each do |product| %>
-  <tr>
-    <td><%= product.name %></td>
-    <td><%= product.price %></td>
-    <td><img src="<%= product.image %>"></td>
-    <td><%= product.description %></td>
-  </tr>
-    <% end %>
-</table>
+<div class="row">
+  <% @products.each_slice(3) do |three_products| %>
+    <div class="row">
+      <% three_products.each do |product| %>
+        <div class="col-md-4">
+          <h2><%= link_to product.name, "/products/#{product.id}" %></h2>
+          <img src="<%= product.image %>" class="img-responsive">
+          <h2>Created at: <%= product.friendly_created_at %></h2>
+          <h2>Tax: $<%= product.calculate_tax %></h2>
+          <h2>Price: $<%= product.price %></h2>
+          <h2>Description: <%= product.description %></h2>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+  
