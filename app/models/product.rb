@@ -8,4 +8,8 @@ class Product < ApplicationRecord
     return (price * 9)/100
   end
 
+  def calculate_discount
+    return (price * 5)/100
+  end
+
 end

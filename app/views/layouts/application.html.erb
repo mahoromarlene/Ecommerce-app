@@ -30,14 +30,17 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Link</a></li>
+        <li class="active"><a href="products?sort=price">Sort by price <span class="sr-only">(current)</span></a></li>
+        <li class="active"><a href="products?id=random">Random product <span class="sr-only">(current)</span></a></li>
+        <li><a href="products?discount=350">Discount products</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
+            <li><a href="/products">All products</a></li>
+            <li><a href="/products?sort=asc">Sort by price from lowest to highest<span class="sr-only">(current)</span></a></li>
+            <li><a href="/products?sort=desc">Sort by price from highest to lowest<span class="sr-only">(current)</span></a></li>
+            <li><a href="/products?filter=discount">Discount products<span class="sr-only">(current)</span></a></li>
+            <li><a href="products?id=random">Random product<span class="sr-only">(current)</span></a></li>
             <li role="separator" class="divider"></li>
             <li><a href="#">Separated link</a></li>
             <li role="separator" class="divider"></li>

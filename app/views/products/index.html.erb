@@ -8,8 +8,9 @@
           <h2><%= link_to product.name, "/products/#{product.id}" %></h2>
           <img src="<%= product.image %>" class="img-responsive">
           <h2>Created at: <%= product.friendly_created_at %></h2>
-          <h2>Tax: $<%= product.calculate_tax %></h2>
           <h2>Price: $<%= product.price %></h2>
+          <h2>Tax: $<%= product.calculate_tax %></h2>
+          <h2>Discount: $<%= product.calculate_discount %></h2>
           <h2>Description: <%= product.description %></h2>
         </div>
       <% end %>
