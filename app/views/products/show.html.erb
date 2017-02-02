@@ -3,6 +3,8 @@
 <h2>Name: <%= @product.name %></h2>
 <h2>Price: $<%= @product.price %></h2>
 <h2>Tax: $<%= @product.calculate_tax %></h2>
+<h2>Supplier name: <%= @product.supplier.name %></h2>
+<h2>Supplier email: <%= @product.supplier.email %></h2>
 <h2>Discount: $<%= @product.calculate_discount %></h2>
 <h2>Created at: <%= @product.friendly_created_at %></h2>
 <h2><img src="<%= @product.image %>"></h2>
