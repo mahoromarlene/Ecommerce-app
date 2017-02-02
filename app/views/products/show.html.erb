@@ -7,8 +7,13 @@
 <h2>Supplier email: <%= @product.supplier.email %></h2>
 <h2>Discount: $<%= @product.calculate_discount %></h2>
 <h2>Created at: <%= @product.friendly_created_at %></h2>
-<h2><img src="<%= @product.image %>"></h2>
 <h2><%= @product.description %></h2>
+<h2><img src="<%= @product.image %>"></h2>
+
+<% @product.images.each do |image| %>
+  <img src="<%=image.url %>">
+<% end %>
+
 
 <%= button_to "Edit", "/products/#{@product.id}/edit", method: :get %>
 
