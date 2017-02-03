@@ -1,0 +1,10 @@
+<h1>Image</h1>
+
+<img src="<%= @image.url %>">
+
+
+<%= button_to "Edit", "/images/#{@image.id}/edit", method: :get %>
+
+<%= form_tag "/images/#{@image.id}", method: :delete do %>
+  <input type="submit" value="Destroy image">
+<% end %>

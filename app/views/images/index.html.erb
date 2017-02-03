@@ -1,0 +1,13 @@
+<h1>All images</h1>
+
+<div class="row">
+  <% @images.each_slice(3) do |three_images| %>
+    <div class="row">
+      <% three_images.each do |image| %>
+        <div class="col-md-4">
+          <img src="<%= image.url %>" class="img-responsive">
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

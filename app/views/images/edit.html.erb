@@ -1,0 +1,14 @@
+<h1>Edit image</h1>
+
+<%= form_tag "/images/#{@image.id}", method: :patch do %>
+
+  <div>
+    Url: <input type="text" name="image">
+  </div>
+  <div>
+    Product_id: <input type="text" name="Product_id">
+  </div>
+  <div>
+    <input type="submit" name="Update image">
+  </div>
+<% end %>

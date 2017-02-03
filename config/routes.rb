@@ -13,5 +13,13 @@ Rails.application.routes.draw do
   get "/login" => "sessions#new"
   post "/login" => "sessions#create"
   delete "/logout" => "sessions#destroy"
+
+  get "/images", to: 'images#index'
+  get "/images/new", to: 'images#new'
+  get "/images/:id", to: 'images#show'
+  post "/images", to: 'images#create'
+  get "/images/:id/edit", to: 'images#edit'
+  patch "/images/:id", to: 'images#update'
+  delete "/images/:id", to: 'images#destroy'
   
 end
