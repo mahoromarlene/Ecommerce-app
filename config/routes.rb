@@ -21,5 +21,9 @@ Rails.application.routes.draw do
   get "/images/:id/edit", to: 'images#edit'
   patch "/images/:id", to: 'images#update'
   delete "/images/:id", to: 'images#destroy'
+
+  get "/orders/new", to: 'orders#new'
+  get "/orders/:id", to: 'orders#show'
+  post "/orders", to: 'orders#create'
   
 end

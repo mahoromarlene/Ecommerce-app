@@ -9,6 +9,10 @@
 <h2>Created at: <%= @product.friendly_created_at %></h2>
 <h2><%= @product.description %></h2>
 
+<% @product.categories.each do |category| %>
+  Category: <%= category.name %>
+<% end %>
+
 <% @product.images.each do |image| %>
   <img src="<%=image.url %>">
 <% end %>
@@ -18,4 +22,16 @@
 
 <%= form_tag "/products/#{@product.id}", method: :delete do %>
   <input type="submit" value="Destroy Product">
+<% end %>
+
+<%= form_tag "/orders", method: :post do %>
+  <div>
+    Quantity: <input type="text" name="quantity">
+  </div>
+  <div>
+    <input type="hidden" name="product_id" value="<%= @product.id %>">
+  </div>
+  <div>
+    <input type="submit" value="Buy Now!">
+  </div>
 <% end %>

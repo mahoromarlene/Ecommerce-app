@@ -5,24 +5,33 @@ class ProductsController < ApplicationController
       @products = Product.all.order(price: params[:sort])
     elsif params[:filter] == "discount"
       @products = Product.where("price <= ?", 350)
+    elsif params[:category]
+      @products = Category.find_by(name: params[:category]).products
     else
       @products = Product.all
     end
   end
 
   def show
-    @product = Product.find_by(id: params[:id])
+    if params[:id] == "random"
+      @product = Product.all.sample
+    else 
+      @product = Product.find_by(id: params[:id])
+    end
   end
   
   def new
+    unless current_user
+      flass[:message] = "You are not allowed to add a product unless you have an account"
+      redirect_to "/signup"
+    end
   end
 
   def create
     name = params[:name]
     price = params[:price]
-    image = params[:image]
     description = params[:description]
-    product = Product.new({name: name, price: price, image: image, description: description})
+    product = Product.new({name: name, price: price, description: description})
     product.save
     flash[:success] = "Your product is created"
     redirect_to "/products/#{product.id}"
