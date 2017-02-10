@@ -22,8 +22,13 @@ Rails.application.routes.draw do
   patch "/images/:id", to: 'images#update'
   delete "/images/:id", to: 'images#destroy'
 
-  get "/orders/new", to: 'orders#new'
+  
   get "/orders/:id", to: 'orders#show'
-  post "/orders", to: 'orders#create'
+  patch "/orders/:id", to: 'orders#update'
+  
+
+  get "/cartedproducts", to: 'cartedproducts#index'
+  post "/cartedproducts", to: 'cartedproducts#create'
+  delete "/cartedproducts/:id", to: 'cartedproducts#destroy'
   
 end

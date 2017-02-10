@@ -1,10 +1,10 @@
 class Product < ApplicationRecord
   belongs_to :supplier 
-  belongs_to :user
   has_many :images 
-  has_many :orders
   has_many :categories, through: :category_products
   has_many :category_products
+  has_many :orders, through: :carted_products
+  has_many :carted_products
 
   def friendly_created_at
     created_at.strftime("%B %e, %Y")

@@ -1,10 +1,8 @@
 <h1>All products</h1>
-
-<%= button_to "/products/new", method: :post do %>
-  <input type="create" value="Create a product">
+<% if current_user && current_user.admin %>
+  <%= button_to "Add a new product", "/products/new", method: :get %>
 <% end %>
 
-<div class="row">
   <% @products.each_slice(3) do |three_products| %>
     <div class="row">
       <% three_products.each do |product| %>
@@ -20,7 +18,7 @@
       <% end %>
     </div>
   <% end %>
-</div>
+
 
 
 
