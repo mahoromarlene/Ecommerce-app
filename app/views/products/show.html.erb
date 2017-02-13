@@ -8,20 +8,20 @@
 <h2>Discount: $<%= @product.calculate_discount %></h2>
 <h2>Created at: <%= @product.friendly_created_at %></h2>
 <h2><%= @product.description %></h2>
-
+<h2>
 <% @product.categories.each do |category| %>
   Category: <%= category.name %>
 <% end %>
-
+</h2>
 <% @product.images.each do |image| %>
   <img src="<%=image.url %>">
 <% end %>
 
 
-<%= button_to "Edit", "/products/#{@product.id}/edit", method: :get %>
+<%= button_to "Edit", "/products/#{@product.id}/edit", class: "btn btn-success", method: :get %>
 
 <%= form_tag "/products/#{@product.id}", method: :delete do %>
-  <input type="submit" value="Destroy Product">
+  <input type="submit" value="Destroy Product" class: "btn btn-success">
 <% end %>
 
 <%= form_tag "/cartedproducts", method: :post do %>

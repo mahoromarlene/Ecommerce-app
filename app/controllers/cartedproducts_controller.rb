@@ -1,6 +1,8 @@
 class CartedproductsController < ApplicationController
+
+  before_action :authenticate_user!
+
   def index
-    # @cartedproducts = current_user.orders.find_by(completed: false).carted_products
     @order = current_user.orders.find_by(completed: false)
 
     unless @order

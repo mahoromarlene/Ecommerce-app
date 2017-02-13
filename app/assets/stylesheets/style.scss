@@ -1,9 +1,21 @@
-body {
+.body {
   font-family: 'Sacramento', cursive;
   font-size: 30px;
   background-image: url('fresh_snow.png');
 }
 
-nav-bar {
+.navbar-default {
+  background-color: #808080;
   size: 100px;
+  margin: 0;
+  padding: 0;
+
+}
+
+.navbar-header {
+  font-color: black;
+}
+
+.show-images {
+  width: 300px;
 }

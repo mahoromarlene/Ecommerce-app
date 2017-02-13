@@ -1,5 +1,7 @@
 class ProductsController < ApplicationController
 
+  before_action :authenticate_user!, except: [:index, :show, :search]
+
   def index
     if params[:sort]
       @products = Product.all.order(price: params[:sort])
@@ -21,31 +23,35 @@ class ProductsController < ApplicationController
   end
   
   def new
-    unless current_user
-      flass[:message] = "You are not allowed to add a product unless you have an account"
-      redirect_to "/signup"
-    end
+    @product = Product.new
+    @suppliers = Supplier.all
   end
+
 
   def create
     name = params[:name]
     price = params[:price]
     description = params[:description]
-    product = Product.new({name: name, price: price, description: description})
-    product.save
-    flash[:success] = "Your product is created"
-    redirect_to "/products/#{product.id}"
+    @product = Product.new({name: name, price: price, description: description})
+    if product.save
+      flash[:success] = "Your product is created"
+      redirect_to "/products/#{@product.id}"
+    else
+      @suppliers = Supplier.all?
+      flash[:warning] = "Product not created"
+      render :new
+    end
   end
 
   def edit
     @product = Product.find_by(id: params[:id])
+    @suppliers = Supplier.all
   end
 
   def update
     product = Product.find_by(id: params[:id])
     product.name = params[:name]
     product.price = params[:price]
-    product.image = params[:image]
     product.description = params[:description]
     product.save
     flash[:success] = "Your product is updated"

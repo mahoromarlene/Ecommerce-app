@@ -1,19 +1,31 @@
 <h1>New product</h1> 
 
+<ul>
+  <% if @product.errors.any? %>
+    <% @product.errors.full_messages.each do |message| %>
+      <li class="model-errors"><%= message %></li> 
+    <% end %>
+  <% end %>
+</ul>
+
 <%= form_tag "/products", method: :post do %>
   <div>
-    Name: <input type="text" name="name">
+    Name: <input type="text" name="name" value="<%= @product.name %>">
   </div>
   <div>
-    Price: <input type="text" name="price">
+    Price: <input type="text" name="price" value="<%= @product.price %>">
   </div>
   <div>
-    Image: <input type="text" name="image">
+    Description: <input type="text" name="description" value="<%= @product.description %>">
+  </div>
+    Supplier:
+     <select name="supplier_id">
+     <option selected="<%= @product.supplier_id %>" disabled selected>Select your option</option>
+       <% @suppliers.each do |supplier| %>
+         <option value="<%= supplier.id %>"><%= supplier.name %></option>
+       <% end %>
   </div>
   <div>
-    Description: <input type="text" name="description">
-  </div>
-  <div>
-    <input type="submit" name="Create Product">
+    <input type="submit" value="Create Product">
   </div>
 <% end %>
